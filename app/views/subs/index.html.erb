@@ -1,0 +1,9 @@
+<h1>all subs: </h1>
+
+<ul>
+  <% @subs.each do |sub_obj| %>
+  <li>
+    <a class="post-link" href="<%= sub_url(sub_obj) %>"><%= sub_obj.title %></a>
+  </li>
+  <% end %>
+</ul>

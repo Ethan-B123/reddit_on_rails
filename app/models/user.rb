@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :posts,
     foreign_key: :author_id
 
+  has_many :modded_subs,
+    foreign_key: :moderator_id,
+    class_name: :Sub
+
+
   def ensure_session
     self.session_token ||= SecureRandom.urlsafe_base64
   end
@@ -23,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def is_password?(pass)
-    BCrypt::Password.new(password_digest).is_password(pass)
+    BCrypt::Password.new(password_digest).is_password?(pass)
   end
 
 end

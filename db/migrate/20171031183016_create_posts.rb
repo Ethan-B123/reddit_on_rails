@@ -4,12 +4,10 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :url
       t.string :content
-      t.integer :sub_id
       t.integer :author_id
 
       t.timestamps
     end
-    add_index :posts, :sub_id
     add_index :posts, :author_id
   end
 end

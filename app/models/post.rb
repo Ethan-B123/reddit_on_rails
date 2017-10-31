@@ -1,7 +1,15 @@
 class Post < ApplicationRecord
-  validates :title, :sub_id, :author_id, presence: true
+  validates :title, presence: true
 
-  belongs_to :sub
+  attr_accessor :sub_ids
+
+  has_many :post_subs,
+    dependent: :destroy
+    # inverse_of: :post
+
+  has_many :subs,
+    through: :post_subs,
+    source: :sub
 
   belongs_to :author,
     foreign_key: :author_id,

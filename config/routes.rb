@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new create)
   resource :session, only: %i(new create destroy)
-  resources :subs do
-    resources :posts, only: %i(new create)
-  end
-  resources :posts, only: %i(show destroy update edit)
+  resources :subs
+  resources :posts, only: %i(new create show destroy update edit)
 
 end

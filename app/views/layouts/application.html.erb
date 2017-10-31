@@ -8,6 +8,28 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <header>
+    <% if current_user %>
+      <h4>current_user: <%= current_user.username %></h4>
+      <%= button_to "Log Out", session_url, method: :delete %>
+    <% end %>
+    <div style="display:flex;justify-content:space-between">
+      <%= link_to "New user", new_user_url, method: :get %>
+      <%= link_to "New post", new_post_url, method: :get %>
+      <%= link_to "New sub", new_sub_url, method: :get %>
+      <%= link_to "All subs", subs_url, method: :get %>
+      <%= link_to "Log in", new_session_url, method: :get %>
+    </div>
+
+    <% if flash.now[:errors] %>
+      <ul>
+        <% flash.now[:errors].each do |err| %>
+          <li><p><%= err %></p></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </header>
+
   <body>
     <%= yield %>
   </body>

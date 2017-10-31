@@ -1,0 +1,15 @@
+
+
+
+
+<h1><%= @sub.title %></h1>
+
+<section class='posts'>
+  <ul>
+    <% @sub.posts.each do |post| %>
+    <li>
+      <a class="post-link" href="<%= post_url(post) %>"><%= post.title %></a>
+    </li>
+    <% end %>
+  </ul>
+</section>
