@@ -1,11 +1,11 @@
 class Post < ApplicationRecord
   validates :title, presence: true
 
-  attr_accessor :sub_ids
+  # attr_accessor :sub_ids
 
   has_many :post_subs,
-    dependent: :destroy
-    # inverse_of: :post
+    dependent: :destroy,
+    inverse_of: :post
 
   has_many :subs,
     through: :post_subs,
